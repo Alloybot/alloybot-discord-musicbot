@@ -1,0 +1,25 @@
+{
+  "name": "alloybot-discord-musicbot",
+  "version": "0.0.1",
+  "description": "Discord Musicbot Add-on to the Multipurpose bot, Alloybot. (Official Package)",
+  "main": "index.js",
+  "scripts": {
+    "setup": "node setup.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alloybot/alloybot-discord-musicbot.git"
+  },
+  "keywords": [
+    "musicbot",
+    "alloybot",
+    "discord",
+    "bot"
+  ],
+  "author": "Taylor Stapleton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alloybot/alloybot-discord-musicbot/issues"
+  },
+  "homepage": "https://github.com/Alloybot/alloybot-discord-musicbot#readme"
+}
