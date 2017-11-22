@@ -3,16 +3,37 @@
 * Command: help.js
 *********************/
 
-module.exports = function(Modules) {
-  Modules['Commands']['help'] = main;
+module.exports = function(Modules, Commands) {
+  Modules['help'] = main;
+  const _INFO = {
+    name: `help`,
+    desc: `Displays all commands that the bot has in either the current channel or DM's.`,
+    _TYPE: `General`,
+    _DISABLED: false,
+    _REASON: undefined,
+    sub: [
+      {
+        name: `here`,
+        desc: `Displays all commands in the current channel.`,
+        _DISABLED: false,
+        _REASON: undefined
+      },
+      {
+        name: `dms`,
+        desc: `Displays all commands in the User's DMs.`,
+        _DISABLED: false,
+        _REASON: undefined
+      }
+    ]
+  }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   const FS = require('fs');
   let self = { Core: Core }, Sub, Content;
-  let CommandList = FS.readdirSync('./commands');
-  
+
   Content = Message.content.split(' ');
   Content.shift();
   Sub = Content.shift();
@@ -28,7 +49,7 @@ function main(Message) {
     Core.DB.put('HelpMsg', HelpMsg);
     send(HelpMsg);
   }
-  
+
   function send(ToSend) {
     if (Sub && Sub.toLowerCase() === 'dm') {
       Message.author.createDM()

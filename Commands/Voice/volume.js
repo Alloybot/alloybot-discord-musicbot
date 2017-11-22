@@ -4,11 +4,11 @@
 *********************/
 
 module.exports = function(Modules) {
-  Modules['Commands']['volume'] = main;
+  Modules['volume'] = main;
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core }, Dispatcher, VoiceConnection, Content, MinVol = Number('-100'), MaxVol = Number('100');
 
   if (Core.Globals[Message.guild.id].VoiceConnection) { VoiceConnection = Core.Globals[Message.guild.id].VoiceConnection }

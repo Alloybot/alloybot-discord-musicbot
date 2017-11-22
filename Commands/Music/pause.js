@@ -3,12 +3,20 @@
 * Command: pause.js
 *********************/
 
-module.exports = function(Modules) {
-  Modules['Commands']['pause'] = main;
+module.exports = function(Modules, Commands) {
+  Modules['pause'] = main;
+  const _INFO = {
+    name: `pause`,
+    desc: `Pauses the currently playing song.`,
+    _TYPE: `Music`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core };
   let Dispatcher, VoiceConnection;
 

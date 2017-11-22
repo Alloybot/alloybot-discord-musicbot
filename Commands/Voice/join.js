@@ -4,11 +4,11 @@
 *********************/
 
 module.exports = function(Modules) {
-  Modules['Commands']['join'] = main;
+  Modules['join'] = main;
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let Joined = Core.DiscordBot.voiceConnections;
   let self = { Core: Core };
 

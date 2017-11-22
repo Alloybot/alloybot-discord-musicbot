@@ -4,12 +4,12 @@
 *********************/
 
 module.exports = function(Modules) {
-  Modules['Commands']['list'] = main;
+  Modules['list'] = main;
 }
 
 function main(Message) {
-  const Core = require('../index.js');
-  let Playlists, PastPlaylists, Embed = Core.Modules.Libs.RichEmbed(), PastEmbed = Core.Modules.Libs.RichEmbed();
+  const Core = require('../../index.js');
+  let Playlists, PastPlaylists, Embed = Core.Modules.RichEmbed(), PastEmbed = Core.Modules.RichEmbed();
   
   let Content = Message.content.split(' ');
   let Comm = '';

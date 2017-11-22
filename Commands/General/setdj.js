@@ -3,12 +3,20 @@
 * Command: setdj.js
 *********************/
 
-module.exports = function(Modules) {
-  Modules['Commands']['setdj'] = main;
+module.exports = function(Modules, Commands) {
+  Modules['setdj'] = main;
+  const _INFO = {
+    name: `setdj`,
+    desc: `If there is no DJ, it sets the author of this message to the DJ. If the DJ sends the message, it sets whoever is mentioned as the DJ.`,
+    _TYPE: `General`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core }, CurrentDJs;
 
   if (Core.DB.has('CurrentDJs')) { CurrentDJs = Core.DB.get('CurrentDJs'); setdj() }

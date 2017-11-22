@@ -3,19 +3,27 @@
 * Command: play.js
 *********************/
 
-module.exports = function(Modules) {
- Modules['Commands']['play'] = main;
+module.exports = function(Modules, Commands) {
+ Modules['play'] = main;
+ const _INFO = {
+   name: `play`,
+   desc: `Starts playing the music in the Playlist, starting from the top.`,
+   _TYPE: `Music`,
+   _DISABLED: false,
+   _REASON: undefined
+ }
+ if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let Playists, PastPlaylists, VoiceConnection, Dispatcher, Opts, Msg;
-  let self = { Core: Core, this: this }, Embed = Core.Modules.Libs.RichEmbed();
+  let self = { Core: Core, this: this }, Embed = Core.Modules.RichEmbed();
   let Joined = Core.DiscordBot.voiceConnections;
 
   if (Core.DB.has('Playlists')) { Playlists = Core.DB.get('Playlists') }
   else { Playlists = {}; Core.DB.put('Playlists', Playlists) };
-  
+
   if (Core.DB.has('PastPlaylists')) { PastPlaylists = Core.DB.get('PastPlaylists') }
   else { PastPlaylists = {}; Core.DB.put('PastPlaylists', PastPlaylists) };
 

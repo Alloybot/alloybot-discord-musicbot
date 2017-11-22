@@ -3,12 +3,20 @@
 * Command: stop.js
 *********************/
 
-module.exports = function(Modules) {
-  Modules['Commands']['stop'] = main;
+module.exports = function(Modules, Commands) {
+  Modules['stop'] = main;
+  const _INFO = {
+    name: `stop`,
+    desc: `Stops the currently playing song, and leaves the voice channel.`,
+    _TYPE: `Music`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core }, Dispatcher, VoiceConnection;
 
   if (Core.Globals[Message.guild.id].VoiceConnection) { VoiceConnection = Core.Globals[Message.guild.id].VoiceConnection; stop() }

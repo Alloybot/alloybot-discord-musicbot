@@ -4,11 +4,11 @@
 *********************/
 
 module.exports = function(Modules) {
-  Modules['Libs']['RichEmbed'] = main;
+  Modules['RichEmbed'] = main;
 }
 
 function main() {
-  const Core = require('../nsmb.js');
+  const Core = require('../index.js');
   const EmbedTemplate = Core.DB.get('RichEmbedTemplate');
   let Embed = new Core.DiscordJS.RichEmbed();
 

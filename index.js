@@ -9,7 +9,7 @@ const YouTubeAPI = require('googleapis');
 const Tracer = require('tracer');
 const Chalk = require('chalk');
 const YTService = new Cassette.YouTubeService(process.env.YOUTUBE_API_KEY);
-let Modules = { Commands: {}, Libs: {} }, DB = FlatFile.sync('./data.db'), Globals = {};
+let Modules = {}, DB = FlatFile.sync('./data.db'), Globals = {};
 DB.clear();
 
 function LoadModules(path) {
@@ -23,13 +23,13 @@ function LoadModules(path) {
       }
     } else {
       if (PathModule.basename(path, '.js') !== 'CMDs' || 'Utils') { require(path)(Modules) }
-      else { console.log() }
+      else { console.log() };
     }
   });
 }
 
-let COMDIR = PathModule.join(__dirname, 'commands');
-let LIBDIR = PathModule.join(__dirname, 'lib');
+let COMDIR = PathModule.join(__dirname, 'Commands');
+let LIBDIR = PathModule.join(__dirname, 'Utils');
 LoadModules(COMDIR);
 LoadModules(LIBDIR);
 
@@ -61,70 +61,70 @@ DiscordBot.on('message', function(Message) {
 
   switch (Message.content.split(' ').shift().replace('>', '').toLowerCase()) {
     case 'add':
-      if (DJ()) { Modules['Commands']['add'](Message) }
+      if (DJ()) { Modules['add'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'clear':
-      if (DJ()) { Modules['Commands']['clear'](Message) }
+      if (DJ()) { Modules['clear'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'getdj':
-      Modules['Commands']['getdj'](Message);
+      Modules['getdj'](Message);
       break;
 
     case 'help':
-      Modules['Commands']['help'](Message);
+      Modules['help'](Message);
       break;
 
     case 'join':
-      if (DJ()) { Modules['Commands']['join'](Message) }
+      if (DJ()) { Modules['join'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'leave':
-      if (DJ()) { Modules['Commands']['leave'](Message) }
+      if (DJ()) { Modules['leave'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'list':
-      if (DJ()) { Modules['Commands']['list'](Message) }
+      if (DJ()) { Modules['list'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'pause':
-      if (DJ()) { Modules['Commands']['pause'](Message) }
+      if (DJ()) { Modules['pause'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'play':
-      if (DJ()) { Modules['Commands']['play'](Message) }
+      if (DJ()) { Modules['play'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'resume':
-      if (DJ()) { Modules['Commands']['resume'](Message) }
+      if (DJ()) { Modules['resume'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'setdj':
-      if (DJ() || CurrentDJs[Message.guild.id] === undefined) { Modules['Commands']['setdj'](Message) }
+      if (DJ() || CurrentDJs[Message.guild.id] === undefined) { Modules['setdj'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'skip':
-      if (DJ()) { Modules['Commands']['skip'](Message) }
+      if (DJ()) { Modules['skip'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'stop':
-      if (DJ()) { Modules['Commands']['stop'](Message) }
+      if (DJ()) { Modules['stop'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case 'volume':
-      if (DJ()) { Modules['Commands']['volume'](Message) }
+      if (DJ()) { Modules['volume'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
   }

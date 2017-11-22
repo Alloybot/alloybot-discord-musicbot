@@ -3,21 +3,17 @@
 * Command: clear.js
 *********************/
 
-module.exports = function(Module) {
-  Module['clear'] = {
-    call: main,
-    category: 'command',
-    command: {
-      description: `Searches `,
-      name: 'clear',
-      prefix: '>',
-      type: 'playlist'
-    }
+module.exports = function(Module, Commands) {
+  Module['clear'] = main;
+  const _INFO = {
+    name: `clear`,
+    desc: ``
   }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core };
 
   if (Core.DB.has('Playlists')) {

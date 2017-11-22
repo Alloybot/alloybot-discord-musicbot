@@ -4,11 +4,11 @@
 *********************/
 
 module.exports = function(Modules) {
-  Modules['Commands']['skip'] = main;
+  Modules['skip'] = main;
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core }, Playists, VoiceConnection, Dispatcher, Opts;
 
   if (Core.DB.has('Playlists')) { Playlists = Core.DB.get('Playlists') }

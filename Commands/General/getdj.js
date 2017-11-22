@@ -3,12 +3,20 @@
 * Command: getdj.js
 *********************/
 
-module.exports = function(Modules) {
-  Modules['Commands']['getdj'] = main;
+module.exports = function(Modules, Commands) {
+  Modules['getdj'] = main;
+  const _INFO = {
+    name: `getdj`,
+    desc: `Gets the current DJ that is in control of the bot, aside from the owner.`,
+    _TYPE: `General`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {
-  const Core = require('../index.js');
+  const Core = require('../../index.js');
   let self = { Core: Core };
   let CurrentDJs;
 
