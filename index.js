@@ -10,7 +10,6 @@ const Tracer = require('tracer');
 const Chalk = require('chalk');
 const YTService = new Cassette.YouTubeService(process.env.YOUTUBE_API_KEY);
 let Modules = {}, DB = FlatFile.sync('./data.db'), Globals = {};
-DB.clear();
 
 function LoadModules(path) {
   FS.lstat(path, function(err, stat) {
@@ -23,7 +22,6 @@ function LoadModules(path) {
       }
     } else {
       if (PathModule.basename(path, '.js') !== 'CMDs' || 'Utils') { require(path)(Modules) }
-      else { console.log() };
     }
   });
 }
@@ -36,10 +34,6 @@ LoadModules(LIBDIR);
 DiscordBot.login(process.env.DISCORD_TOKEN);
 DiscordBot.on('ready', function() {
   console.log(`Connected to ${DiscordBot.guilds.size} servers.`);
-  let RichEmbedTemplate = new DiscordJS.RichEmbed();
-  RichEmbedTemplate.setColor('RED');
-  RichEmbedTemplate.setFooter('Alloybot - Music', DiscordBot.user.avatarURL);
-  DB.put('RichEmbedTemplate', RichEmbedTemplate);
 });
 
 DiscordBot.on('message', function(Message) {
@@ -135,7 +129,7 @@ module.exports = {
   DiscordJS: DiscordJS,
   Cassette: Cassette,
   DB: DB,
-  Creator: process.env.DISCORD_USER_ID,
+  Creator: process.env.CREATOR_ID,
   Modules: Modules,
   YTService: YTService,
   Globals: Globals

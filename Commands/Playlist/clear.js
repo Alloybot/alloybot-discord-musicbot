@@ -1,5 +1,5 @@
 /********************
-* NonShitMusicBot.js
+* Alloybot Discord Musicbot
 * Command: clear.js
 *********************/
 
@@ -7,7 +7,10 @@ module.exports = function(Module, Commands) {
   Module['clear'] = main;
   const _INFO = {
     name: `clear`,
-    desc: ``
+    desc: `Clears the current playlist.`,
+    _TYPE: `Playlist`,
+    _DISABLED: false,
+    _REASON: undefined
   }
   if (typeof Commands === 'array') Commands.push(_INFO);
 }

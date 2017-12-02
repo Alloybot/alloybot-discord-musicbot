@@ -5,6 +5,14 @@
 
 module.exports = function(Modules) {
   Modules['skip'] = main;
+  const _INFO = {
+    name: `skip`,
+    desc: `Skips the current song.`,
+    _TYPE: `Playlist`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof Commands === 'array') Commands.push(_INFO);
 }
 
 function main(Message) {

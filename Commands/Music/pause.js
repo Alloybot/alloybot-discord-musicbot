@@ -1,5 +1,5 @@
 /********************
-* NonShitMusicBot.js
+* Alloybot Discord Musicbot
 * Command: pause.js
 *********************/
 

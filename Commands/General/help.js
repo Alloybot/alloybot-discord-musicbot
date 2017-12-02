@@ -1,5 +1,5 @@
 /********************
-* NonShitMusicBot.js
+* Alloybot Discord Musicbot
 * Command: help.js
 *********************/
 
@@ -10,21 +10,7 @@ module.exports = function(Modules, Commands) {
     desc: `Displays all commands that the bot has in either the current channel or DM's.`,
     _TYPE: `General`,
     _DISABLED: false,
-    _REASON: undefined,
-    sub: [
-      {
-        name: `here`,
-        desc: `Displays all commands in the current channel.`,
-        _DISABLED: false,
-        _REASON: undefined
-      },
-      {
-        name: `dms`,
-        desc: `Displays all commands in the User's DMs.`,
-        _DISABLED: false,
-        _REASON: undefined
-      }
-    ]
+    _REASON: undefined
   }
   if (typeof Commands === 'array') Commands.push(_INFO);
 }
