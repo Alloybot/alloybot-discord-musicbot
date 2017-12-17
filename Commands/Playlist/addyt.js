@@ -3,8 +3,7 @@
 * Command: addyt.js
 *********************/
 
-module.exports = function(Module, ModuleInfo) {
-  Module[`addyt`] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `addyt`,
     desc: `Adds a song from youtube to the playlist via Link or Search terms. (Picks the first video in the search results)`,
@@ -12,7 +11,8 @@ module.exports = function(Module, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands[`addyt`] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

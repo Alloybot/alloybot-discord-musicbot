@@ -3,8 +3,7 @@
 * Command: clear.js
 *********************/
 
-module.exports = function(Module, ModuleInfo) {
-  Module['clear'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `clear`,
     desc: `Clears the current playlist.`,
@@ -12,7 +11,8 @@ module.exports = function(Module, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['clear'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

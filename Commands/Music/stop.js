@@ -3,8 +3,7 @@
 * Command: stop.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['stop'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `stop`,
     desc: `Stops the currently playing song, and leaves the voice channel.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['stop'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

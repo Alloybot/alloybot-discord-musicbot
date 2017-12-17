@@ -3,8 +3,7 @@
 * Command: pause.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['pause'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `pause`,
     desc: `Pauses the currently playing song.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['pause'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

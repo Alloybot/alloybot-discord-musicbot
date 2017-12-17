@@ -3,8 +3,7 @@
 * Command: help.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['help'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `help`,
     desc: `Displays all commands that the bot has in the users DM's.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['help'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {
@@ -28,7 +28,7 @@ function main(Message) {
     Voice: []
   };
 
-  for (Info in Core.ModuleInfo) {
+  for (Info in Core.Modules.Info) {
     HelpOBJ[Info._TYPE].push(Info);
   }
 

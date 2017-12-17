@@ -3,8 +3,7 @@
 * Command: getdj.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['getdj'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `getdj`,
     desc: `Gets the current DJ that is in control of the bot, aside from the owner.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['getdj'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

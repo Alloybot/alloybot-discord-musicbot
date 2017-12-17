@@ -3,8 +3,7 @@
 * Command: past.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['past'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `past`,
     desc: `Lists the songs that have already played.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['past'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

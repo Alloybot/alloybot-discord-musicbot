@@ -3,8 +3,7 @@
 * Command: addsc.js
 *********************/
 
-module.exports = function(Module, ModuleInfo) {
-  Module[`addsc`] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `addsc`,
     desc: `Adds a song from soundcloud to the playlist via Link or Search terms. (Picks the first sound in the search results)`,
@@ -12,7 +11,8 @@ module.exports = function(Module, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands[`addsc`] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

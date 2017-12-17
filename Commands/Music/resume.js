@@ -3,8 +3,7 @@
 * Command: resume.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['resume'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `resume`,
     desc: `Resumes the currently paused song, if any.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['resume'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

@@ -3,8 +3,7 @@
 * Command: play.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
- Modules['play'] = main;
+module.exports = function(Modules) {
  const _INFO = {
    name: `play`,
    desc: `Starts playing the music in the Playlist, starting from the top.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
    _DISABLED: false,
    _REASON: undefined
  }
- if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+ Modules.Commands['play'] = main;
+ Modules.Info.push(_INFO);
 }
 
 function main(Message) {

@@ -3,8 +3,7 @@
 * Command: setdj.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['setdj'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `setdj`,
     desc: `If there is no DJ, it sets the author of this message to the DJ. If the DJ sends the message, it sets whoever is mentioned as the DJ.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['setdj'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

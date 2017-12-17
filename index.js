@@ -9,7 +9,7 @@ const YouTubeAPI = require('googleapis');
 const Tracer = require('tracer');
 const Chalk = require('chalk');
 const YTService = new Cassette.YouTubeService(process.env.YOUTUBE_API_KEY);
-let Modules = {}, DB = FlatFile.sync('./data.db'), Globals = {}, ModuleInfo = [];
+let Modules = {Commands: {}, Info: []}, DB = FlatFile.sync('./data.db'), Globals = {};
 DB.clear();
 
 function LoadModules(path) {
@@ -22,7 +22,8 @@ function LoadModules(path) {
         LoadModules(f);
       }
     } else {
-      require(path)(Modules, ModuleInfo);
+      require(path)(Modules);
+      console.log(Modules);
     }
   });
 }
@@ -54,75 +55,75 @@ DiscordBot.on('message', function(Message) {
 
   switch (Message.content.split(' ').shift().toLowerCase()) {
     case '>add':
-      if (DJ()) { Modules['addyt'](Message) }
+      if (DJ()) { Modules.Commands['addyt'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>clear':
-      if (DJ()) { Modules['clear'](Message) }
+      if (DJ()) { Modules.Commands['clear'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>getdj':
-      Modules['getdj'](Message);
+      Modules.Commands['getdj'](Message);
       break;
 
     case '>help':
-      Modules['help'](Message);
+      Modules.Commands['help'](Message);
       break;
 
     case '>join':
-      if (DJ()) { Modules['join'](Message) }
+      if (DJ()) { Modules.Commands['join'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>leave':
-      if (DJ()) { Modules['leave'](Message) }
+      if (DJ()) { Modules.Commands['leave'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>now':
-      if (DJ()) { Modules['now'](Message) }
+      if (DJ()) { Modules.Commands['now'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>past':
-      if (DJ()) { Modules['past'](Message) }
+      if (DJ()) { Modules.Commands['past'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>pause':
-      if (DJ()) { Modules['pause'](Message) }
+      if (DJ()) { Modules.Commands['pause'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>play':
-      if (DJ()) { Modules['play'](Message) }
+      if (DJ()) { Modules.Commands['play'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>resume':
-      if (DJ()) { Modules['resume'](Message) }
+      if (DJ()) { Modules.Commands['resume'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>setdj':
-      if (DJ() || CurrentDJs[Message.guild.id] === undefined) { Modules['setdj'](Message) }
+      if (DJ() || CurrentDJs[Message.guild.id] === undefined) { Modules.Commands['setdj'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>skip':
-      if (DJ()) { Modules['skip'](Message) }
+      if (DJ()) { Modules.Commands['skip'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>stop':
-      if (DJ()) { Modules['stop'](Message) }
+      if (DJ()) { Modules.Commands['stop'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
     case '>volume':
-      if (DJ()) { Modules['volume'](Message) }
+      if (DJ()) { Modules.Commands['volume'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
   }
@@ -136,6 +137,5 @@ module.exports = {
   Creator: process.env.CREATOR_ID,
   Modules: Modules,
   YTService: YTService,
-  Globals: Globals,
-  ModuleInfo: ModuleInfo
+  Globals: Globals
 }

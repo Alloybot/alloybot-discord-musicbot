@@ -3,8 +3,7 @@
 * Command: skip.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['skip'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `skip`,
     desc: `Skips the current song.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['skip'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

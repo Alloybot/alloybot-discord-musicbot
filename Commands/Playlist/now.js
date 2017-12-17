@@ -3,8 +3,7 @@
 * Command: now.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['now'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `now`,
     desc: `Lists the upcoming songs in the playlist.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['now'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {

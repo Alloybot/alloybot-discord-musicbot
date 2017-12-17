@@ -3,8 +3,7 @@
 * Command: leave.js
 *********************/
 
-module.exports = function(Modules, ModuleInfo) {
-  Modules['leave'] = main;
+module.exports = function(Modules) {
   const _INFO = {
     name: `leave`,
     desc: `Leaves the current voice channel.`,
@@ -12,7 +11,8 @@ module.exports = function(Modules, ModuleInfo) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
+  Modules.Commands['leave'] = main;
+  Modules.Info.push(_INFO);
 }
 
 function main(Message) {
