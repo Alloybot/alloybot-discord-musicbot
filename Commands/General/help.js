@@ -7,7 +7,7 @@ module.exports = function(Modules, ModuleInfo) {
   Modules['help'] = main;
   const _INFO = {
     name: `help`,
-    desc: `Displays all commands that the bot has in either the current channel or DM's.`,
+    desc: `Displays all commands that the bot has in the users DM's.`,
     _TYPE: `General`,
     _DISABLED: false,
     _REASON: undefined
@@ -17,37 +17,39 @@ module.exports = function(Modules, ModuleInfo) {
 
 function main(Message) {
   const Core = require('../../index.js');
-  const FS = require('fs');
-  let self = { Core: Core }, Sub, Content;
+  let Embed = new Core.DiscordJS.RichEmbed();
+  Embed.setColor('RED');
+  Embed.setFooter('Alloybot - Music', Core.DiscordBot.user.avatarURL);
 
-  Content = Message.content.split(' ');
-  Content.shift();
-  Sub = Content.shift();
+  let HelpOBJ = {
+    General: [],
+    Music: [],
+    Playlist: [],
+    Voice: []
+  };
 
-  if (Core.DB.has('HelpMsg')) {
-    let HelpMsg = Core.DB.get('HelpMsg');
-    send(HelpMsg);
-  } else {
-    let HelpMsg = Core.DB.get('RichEmbedTemplate');
-    let Description = ''
-    for (i in CommandList) Description = Description + `>${CommandList[i].replace('.js', '')}\r\n`
-    HelpMsg.addField('Command List', Description);
-    Core.DB.put('HelpMsg', HelpMsg);
-    send(HelpMsg);
+  for (Info in Core.ModuleInfo) {
+    HelpOBJ[Info._TYPE].push(Info);
   }
 
-  function send(ToSend) {
-    if (Sub && Sub.toLowerCase() === 'dm') {
-      Message.author.createDM()
-      .then(function(Channel) {
-        Channel.send(ToSend);
-      }).catch(function(error) {
-        console.error(error);
-      });
-    } else if (Sub && Sub.toLowerCase() === 'here') {
-      Message.channel.send(ToSend);
-    } else if (Sub === undefined) {
-      Message.channel.send(`The subcommands for \`>help\` are \`dm\` and \`here\``);
+  function parseInfo(type) {
+    let string = '';
+    for (let i = 0; i < HelpOBJ[type].length; i++) {
+       if (i != (HelpOBJ[type].length - 1)) {
+         string += `${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}\r\n`;
+       } else {
+         string += `${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}`;
+       }
     }
+    return string;
   }
+
+  Embed.addField(`General`, parseInfo('General'));
+  Embed.addField(`Music`, parseInfo('Music'));
+  Embed.addField(`Playlist`, parseInfo('Playlist'));
+  Embed.addField(`Voice`, parseInfo('Voice'));
+
+  Message.author.createDM(function(DMChannel) {
+    DMChannel.send(Embed);
+  });
 }

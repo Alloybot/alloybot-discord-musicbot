@@ -30,8 +30,8 @@ function main(Message) {
       if (i >= PastPlaylists[Message.guild.id].pos) {
         let song = PastPlaylists[Message.guild.id][i];
         i = Number(i) + 1;
-        Embed.setColor('RED');
-        Embed.setFooter('Alloybot - Music', Core.DiscordBot.user.avatarURL);
+        PastEmbed.setColor('RED');
+        PastEmbed.setFooter('Alloybot - Music', Core.DiscordBot.user.avatarURL);
         PastEmbed.addField(`Song #${i}`, song.title);
       }
     }

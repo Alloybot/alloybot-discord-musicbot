@@ -136,5 +136,6 @@ module.exports = {
   Creator: process.env.CREATOR_ID,
   Modules: Modules,
   YTService: YTService,
-  Globals: Globals
+  Globals: Globals,
+  ModuleInfo: ModuleInfo
 }
