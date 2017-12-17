@@ -3,8 +3,16 @@
 * Command: volume.js
 *********************/
 
-module.exports = function(Modules) {
+module.exports = function(Modules, ModuleInfo) {
   Modules['volume'] = main;
+  const _INFO = {
+    name: `volume`,
+    desc: `Changes the volume of the bot.`,
+    _TYPE: `Voice`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
 function main(Message) {

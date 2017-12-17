@@ -3,7 +3,7 @@
 * Command: now.js
 *********************/
 
-module.exports = function(Modules) {
+module.exports = function(Modules, ModuleInfo) {
   Modules['now'] = main;
   const _INFO = {
     name: `now`,
@@ -12,7 +12,7 @@ module.exports = function(Modules) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof Commands === 'array') Commands.push(_INFO);
+  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
 function main(Message) {

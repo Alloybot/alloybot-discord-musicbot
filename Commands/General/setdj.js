@@ -3,7 +3,7 @@
 * Command: setdj.js
 *********************/
 
-module.exports = function(Modules, Commands) {
+module.exports = function(Modules, ModuleInfo) {
   Modules['setdj'] = main;
   const _INFO = {
     name: `setdj`,
@@ -12,7 +12,7 @@ module.exports = function(Modules, Commands) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof Commands === 'array') Commands.push(_INFO);
+  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
 function main(Message) {

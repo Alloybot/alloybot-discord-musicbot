@@ -3,7 +3,7 @@
 * Command: clear.js
 *********************/
 
-module.exports = function(Module, Commands) {
+module.exports = function(Module, ModuleInfo) {
   Module['clear'] = main;
   const _INFO = {
     name: `clear`,
@@ -12,7 +12,7 @@ module.exports = function(Module, Commands) {
     _DISABLED: false,
     _REASON: undefined
   }
-  if (typeof Commands === 'array') Commands.push(_INFO);
+  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
 function main(Message) {

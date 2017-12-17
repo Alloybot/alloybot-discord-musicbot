@@ -9,7 +9,7 @@ const YouTubeAPI = require('googleapis');
 const Tracer = require('tracer');
 const Chalk = require('chalk');
 const YTService = new Cassette.YouTubeService(process.env.YOUTUBE_API_KEY);
-let Modules = {}, DB = FlatFile.sync('./data.db'), Globals = {};
+let Modules = {}, DB = FlatFile.sync('./data.db'), Globals = {}, ModuleInfo = [];
 
 function LoadModules(path) {
   FS.lstat(path, function(err, stat) {
@@ -21,15 +21,13 @@ function LoadModules(path) {
         LoadModules(f);
       }
     } else {
-      if (PathModule.basename(path, '.js') !== 'CMDs' || 'Utils') { require(path)(Modules) }
+      require(path)(Modules, ModuleInfo);
     }
   });
 }
 
 let COMDIR = PathModule.join(__dirname, 'Commands');
-let LIBDIR = PathModule.join(__dirname, 'Utils');
 LoadModules(COMDIR);
-LoadModules(LIBDIR);
 
 DiscordBot.login(process.env.DISCORD_TOKEN);
 DiscordBot.on('ready', function() {

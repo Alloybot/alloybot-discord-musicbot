@@ -3,8 +3,16 @@
 * Command: join.js
 *********************/
 
-module.exports = function(Modules) {
+module.exports = function(Modules, ModuleInfo) {
   Modules['join'] = main;
+  const _INFO = {
+    name: `join`,
+    desc: `Joins the voice channel that the runner of the command is in.`,
+    _TYPE: `Voice`,
+    _DISABLED: false,
+    _REASON: undefined
+  }
+  if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
 function main(Message) {
