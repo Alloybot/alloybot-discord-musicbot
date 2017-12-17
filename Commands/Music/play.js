@@ -18,7 +18,7 @@ module.exports = function(Modules) {
 function main(Message) {
   const Core = require('../../index.js');
   let Playists, PastPlaylists, VoiceConnection, Dispatcher, Opts, Msg;
-  let self = { Core: Core, this: this }, Embed = new Core.DiscordJS.RichEmbed();
+  let Embed = new Core.DiscordJS.RichEmbed();
   let Joined = Core.DiscordBot.voiceConnections;
 
   if (Core.DB.has('Playlists')) { Playlists = Core.DB.get('Playlists') }

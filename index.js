@@ -41,16 +41,21 @@ DiscordBot.on('message', function(Message) {
   else { CurrentDJs = {}; DB.put('CurrentDJs', CurrentDJs) }
 
   function DJ() {
+    // || process.env.CREATOR_ID
     if (CurrentDJs[Message.guild.id] === Message.author.id || process.env.CREATOR_ID) { return true }
     else { return false };
   }
 
-  if (!Message.guild) { return }
+  if (!Message.guild) { /* Do Nothing */ }
   else { NoPerms = `You do not have perms to do that. Only <@${CurrentDJs[Message.guild.id]}> can control me currently.` };
 
   if (Message.author.id === DiscordBot.user.id) return;
 
-  if (!Globals[Message.guild.id]) Globals[Message.guild.id] = {};
+  try {
+    if (!Globals[Message.guild.id]) Globals[Message.guild.id] = {};
+  } catch (e) {
+    e = null;
+  }
 
   switch (Message.content.split(' ').shift().toLowerCase()) {
     case '>add':
@@ -129,6 +134,13 @@ DiscordBot.on('message', function(Message) {
     case '>volume':
       if (DJ()) { Modules.Commands['volume'](Message) }
       else { Message.channel.send(NoPerms) };
+      break;
+
+    case '>generateinvite':
+      /* console.log(`Channel Type: ${Message.channel.type}`);
+      console.log(`Author ID: ${Message.author.id}`);
+      console.log(`Creator ID: ${process.env.CREATOR_ID}`); */
+      Modules.Commands['generateinvite'](Message);
       break;
   }
 });

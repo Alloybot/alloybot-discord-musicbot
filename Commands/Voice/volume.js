@@ -17,13 +17,13 @@ module.exports = function(Modules) {
 
 function main(Message) {
   const Core = require('../../index.js');
-  let self = { Core: Core }, Dispatcher, VoiceConnection, Content, MinVol = Number('-100'), MaxVol = Number('100');
+  let Dispatcher, VoiceConnection, Content, MinVol = Number('-100'), MaxVol = Number('100');
 
   if (Core.Globals[Message.guild.id].VoiceConnection) { VoiceConnection = Core.Globals[Message.guild.id].VoiceConnection }
   else { Message.channel.send(`There is no music playing nor am I in a voice channel.`) };
 
-  if (VoiceConnection.dispatcher) { Dispatcher = VoiceConnection.dispatcher }
-  else { Message.channel.send(`There is no music playing.`) };
+  if (!VoiceConnection) { Message.channel.send(`I need to be in a channel first.`) }
+  else { Dispatcher = VoiceConnection.dispatcher };
 
   Content = Message.content.replace('>volume ', '');
   Content = Number(Content);

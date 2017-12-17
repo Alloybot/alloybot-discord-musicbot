@@ -17,7 +17,7 @@ module.exports = function(Modules) {
 
 function main(Message) {
   const Core = require('../../index.js');
-  let self = { Core: Core }, Dispatcher, VoiceConnection;
+  let Dispatcher, VoiceConnection;
 
   if (Core.Globals[Message.guild.id].VoiceConnection) { VoiceConnection = Core.Globals[Message.guild.id].VoiceConnection; stop() }
   else { Message.channel.send(`There is no music playing nor am I in a voice channel.`) };

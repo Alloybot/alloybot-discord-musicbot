@@ -17,7 +17,6 @@ module.exports = function(Modules) {
 
 function main(Message) {
   const Core = require('../../index.js');
-  let self = { Core: Core };
 
   if (Core.DB.has('Playlists')) {
     let Playlists = Core.DB.get('Playlists');

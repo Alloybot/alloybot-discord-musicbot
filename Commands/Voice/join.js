@@ -18,7 +18,6 @@ module.exports = function(Modules) {
 function main(Message) {
   const Core = require('../../index.js');
   let Joined = Core.DiscordBot.voiceConnections;
-  let self = { Core: Core };
 
   if (Joined.has(Message.member.voiceChannelID)) {
     Message.channel.send(`Already Connected.`);
