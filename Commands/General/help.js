@@ -44,10 +44,10 @@ function main(Message) {
     return string;
   }
 
-  Embed.addField(`General`, parseInfo('General'));
-  Embed.addField(`Music`, parseInfo('Music'));
-  Embed.addField(`Playlist`, parseInfo('Playlist'));
-  Embed.addField(`Voice`, parseInfo('Voice'));
+  Embed.addField(`General`, `${parseInfo('General')}`);
+  Embed.addField(`Music`, `${parseInfo('Music')}`);
+  Embed.addField(`Playlist`, `${parseInfo('Playlist')}`);
+  Embed.addField(`Voice`, `${parseInfo('Voice')}`);
 
   Message.author.createDM(function(DMChannel) {
     DMChannel.send(Embed);
