@@ -44,11 +44,19 @@ function main(Message) {
     Embed.fields.push({name: type, value: string});
   }
 
-  Message.author.createDM(function(DMChannel) {
+  if (Message.author.dmChannel) {
     parseInfo('General');
     parseInfo('Music');
     parseInfo('Playlist');
     parseInfo('Voice');
-    DMChannel.send(Embed);
-  });
+    Message.author.dmChannel.send(Embed);
+  } else {
+    Message.author.createDM(function(DMChannel) {
+      parseInfo('General');
+      parseInfo('Music');
+      parseInfo('Playlist');
+      parseInfo('Voice');
+      DMChannel.send(Embed);
+    });
+  }
 }
