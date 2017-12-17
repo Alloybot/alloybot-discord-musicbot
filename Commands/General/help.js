@@ -41,15 +41,14 @@ function main(Message) {
          string += `${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}`;
        }
     }
-    return string;
+    Embed.fields.push({name: type, value: string});
   }
 
-  Embed.addField(`General`, `${parseInfo('General')}`);
-  Embed.addField(`Music`, `${parseInfo('Music')}`);
-  Embed.addField(`Playlist`, `${parseInfo('Playlist')}`);
-  Embed.addField(`Voice`, `${parseInfo('Voice')}`);
-
   Message.author.createDM(function(DMChannel) {
+    parseInfo('General');
+    parseInfo('Music');
+    parseInfo('Playlist');
+    parseInfo('Voice');
     DMChannel.send(Embed);
   });
 }
