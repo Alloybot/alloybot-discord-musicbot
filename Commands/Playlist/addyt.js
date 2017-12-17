@@ -6,7 +6,7 @@
 module.exports = function(Modules) {
   const _INFO = {
     name: `addyt`,
-    desc: `Adds a song from youtube to the playlist via Link or Search terms. (Picks the first video in the search results)`,
+    desc: `Adds a song from youtube to the playlist via Link or Search terms. (Picks the first video in the search results) *aliased to >add*`,
     _TYPE: `Playlist`,
     _DISABLED: false,
     _REASON: undefined

@@ -8,8 +8,8 @@ module.exports = function(Modules) {
     name: `playing`,
     desc: `Says what song is currently playing.`,
     _TYPE: `Playlist`,
-    _DISABLED: false,
-    _REASON: undefined
+    _DISABLED: true,
+    _REASON: 'Not yet implemented.'
   }
   Modules.Commands['playing'] = main;
   Modules.Info.push(_INFO);

@@ -23,7 +23,6 @@ function LoadModules(path) {
       }
     } else {
       require(path)(Modules);
-      console.log(Modules);
     }
   });
 }
@@ -55,6 +54,11 @@ DiscordBot.on('message', function(Message) {
 
   switch (Message.content.split(' ').shift().toLowerCase()) {
     case '>add':
+      if (DJ()) { Modules.Commands['addyt'](Message) }
+      else { Message.channel.send(NoPerms) };
+      break;
+
+    case '>addyt':
       if (DJ()) { Modules.Commands['addyt'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
