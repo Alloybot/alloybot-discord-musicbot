@@ -15,7 +15,7 @@ module.exports = function(Modules, ModuleInfo) {
   if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
-function main() {
+function main(Message) {
   const Core = require('../../index.js');
   let PastPlaylists, PastEmbed = new Core.DiscordJS.RichEmbed();
 

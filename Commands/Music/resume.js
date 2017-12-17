@@ -16,7 +16,7 @@ module.exports = function(Modules, ModuleInfo) {
 }
 
 function main(Message) {
-  const Core = require('../../nsmb.js');
+  const Core = require('../../index.js');
   let self = { Core: Core }, Dispatcher;
 
   if (Core.Globals[Message.guild.id].VoiceConnection) { VoiceConnection = Core.Globals[Message.guild.id].VoiceConnection }

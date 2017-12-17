@@ -15,6 +15,6 @@ module.exports = function(Module, ModuleInfo) {
   if (typeof ModuleInfo === 'array') ModuleInfo.push(_INFO);
 }
 
-function main() {
-  
+function main(Message) {
+
 }
