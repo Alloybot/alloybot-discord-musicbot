@@ -22,8 +22,8 @@ function main(Message) {
   if (Core.DB.has('PastPlaylists')) { PastPlaylists = Core.DB.get('PastPlaylists') }
   else { PastPlaylists = {}; Core.DB.put('PastPlaylists', PastPlaylists) };
 
-  if (PastPlaylists[Message.guild.id] && Comm === 'past') { pastList() }
-  else if (!PastPlaylists[Message.guild.id] && Comm === 'past') { Message.channel.send(`The past playlist is empty.`) };
+  if (PastPlaylists[Message.guild.id]) { pastList() }
+  else if (!PastPlaylists[Message.guild.id]) { Message.channel.send(`The past playlist is empty.`) };
 
   function pastList() {
     for (i in PastPlaylists[Message.guild.id]) {

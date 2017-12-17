@@ -52,76 +52,76 @@ DiscordBot.on('message', function(Message) {
 
   if (!Globals[Message.guild.id]) Globals[Message.guild.id] = {};
 
-  switch (Message.content.split(' ').shift().replace('>', '').toLowerCase()) {
-    case 'add':
+  switch (Message.content.split(' ').shift().toLowerCase()) {
+    case '>add':
       if (DJ()) { Modules['addyt'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'clear':
+    case '>clear':
       if (DJ()) { Modules['clear'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'getdj':
+    case '>getdj':
       Modules['getdj'](Message);
       break;
 
-    case 'help':
+    case '>help':
       Modules['help'](Message);
       break;
 
-    case 'join':
+    case '>join':
       if (DJ()) { Modules['join'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'leave':
+    case '>leave':
       if (DJ()) { Modules['leave'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'now':
+    case '>now':
       if (DJ()) { Modules['now'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'past':
+    case '>past':
       if (DJ()) { Modules['past'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'pause':
+    case '>pause':
       if (DJ()) { Modules['pause'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'play':
+    case '>play':
       if (DJ()) { Modules['play'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'resume':
+    case '>resume':
       if (DJ()) { Modules['resume'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'setdj':
+    case '>setdj':
       if (DJ() || CurrentDJs[Message.guild.id] === undefined) { Modules['setdj'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'skip':
+    case '>skip':
       if (DJ()) { Modules['skip'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'stop':
+    case '>stop':
       if (DJ()) { Modules['stop'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'volume':
+    case '>volume':
       if (DJ()) { Modules['volume'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
