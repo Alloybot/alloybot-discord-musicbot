@@ -34,7 +34,8 @@ function main(Message) {
     Playlists[Message.guild.id].next().then(function(bool) {
       if (bool) {
         Dispatcher.end('Skipped');
-        self.Core.Modules.Commands.play(Message);
+        require('../Voice/join.js')(Message);
+        require('../Music/play.js')(Message);
       }
     }).catch(function(error) {
       console.error(error);

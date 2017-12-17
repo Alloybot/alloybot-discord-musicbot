@@ -18,7 +18,7 @@ module.exports = function(Modules, ModuleInfo) {
 function main(Message) {
   const Core = require('../../index.js');
   let Playists, PastPlaylists, VoiceConnection, Dispatcher, Opts, Msg;
-  let self = { Core: Core, this: this }, Embed = Core.Modules.RichEmbed();
+  let self = { Core: Core, this: this }, Embed = new Core.DiscordJS.RichEmbed();
   let Joined = Core.DiscordBot.voiceConnections;
 
   if (Core.DB.has('Playlists')) { Playlists = Core.DB.get('Playlists') }
@@ -45,6 +45,8 @@ function main(Message) {
     Opts = Core.Globals[Message.guild.id].StreamOpts = { passes: 2, bitrate: 'auto' };
     let CurrentSong = Playlists[Message.guild.id][Playlists[Message.guild.id].pos];
     Dispatcher = VoiceConnection.playStream(CurrentSong.stream(), Opts);
+    Embed.setColor('RED');
+    Embed.setFooter('Alloybot - Music', Core.DiscordBot.user.avatarURL);
     Embed.fields = [{name: 'Song', value: CurrentSong.title}];
     Message.channel.send(`**Now Playing.**`, Embed);
     if (Playlists[Message.guild.id].pos > 0) PastPlaylists[Message.guild.id].add(Playlists[Message.guild.id][Playlists[Message.guild.id].pos - 1].streamURL, [Core.YTService]);

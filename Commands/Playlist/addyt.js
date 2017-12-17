@@ -17,7 +17,7 @@ module.exports = function(Module, ModuleInfo) {
 
 function main(Message) {
   const Core = require('../../index.js');
-  let self = { Core: Core }, Embed = Core.Modules.RichEmbed(), Playlists, PastPlaylists, Content;
+  let self = { Core: Core }, Embed = new Core.DiscordJS.RichEmbed(), Playlists, PastPlaylists, Content;
 
   if (Core.DB.has('Playlists')) { Playlists = Core.DB.get('Playlists') }
   else { Playlists = {}; Core.DB.put('Playlists', Playlists) };
@@ -26,7 +26,7 @@ function main(Message) {
   else { PastPlaylists = {}; Core.DB.put('PastPlaylists', PastPlaylists) };
 
   if (Playlists[Message.guild.id]) { addsong() }
-  { Playlists[Message.guild.id] = new Core.Cassette.Playlist(); addsong() };
+  else { Playlists[Message.guild.id] = new Core.Cassette.Playlist(); addsong() };
 
   if (!PastPlaylists[Message.guild.id]) { PastPlaylists[Message.guild.id] = new Core.Cassette.Playlist() };
 

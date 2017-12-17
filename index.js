@@ -10,6 +10,7 @@ const Tracer = require('tracer');
 const Chalk = require('chalk');
 const YTService = new Cassette.YouTubeService(process.env.YOUTUBE_API_KEY);
 let Modules = {}, DB = FlatFile.sync('./data.db'), Globals = {}, ModuleInfo = [];
+DB.clear();
 
 function LoadModules(path) {
   FS.lstat(path, function(err, stat) {
@@ -53,7 +54,7 @@ DiscordBot.on('message', function(Message) {
 
   switch (Message.content.split(' ').shift().replace('>', '').toLowerCase()) {
     case 'add':
-      if (DJ()) { Modules['add'](Message) }
+      if (DJ()) { Modules['addyt'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
@@ -80,8 +81,13 @@ DiscordBot.on('message', function(Message) {
       else { Message.channel.send(NoPerms) };
       break;
 
-    case 'list':
-      if (DJ()) { Modules['list'](Message) }
+    case 'now':
+      if (DJ()) { Modules['now'](Message) }
+      else { Message.channel.send(NoPerms) };
+      break;
+
+    case 'past':
+      if (DJ()) { Modules['past'](Message) }
       else { Message.channel.send(NoPerms) };
       break;
 
