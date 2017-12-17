@@ -36,9 +36,9 @@ function main(Message) {
     let string = '';
     for (let i = 0; i < HelpOBJ[type].length; i++) {
        if (i != (HelpOBJ[type].length - 1)) {
-         string += `${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}\r\n`;
+         string = `${string}${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}\r\n`;
        } else {
-         string += `${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}`;
+         string = `${string}${HelpOBJ[type][i].name} // ${HelpOBJ[type][i].desc}`;
        }
     }
     Embed.fields.push({name: type, value: string});
