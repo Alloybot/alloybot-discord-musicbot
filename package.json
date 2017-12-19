@@ -2,7 +2,7 @@
   "name": "alloybot-discord-musicbot",
   "version": "0.0.1",
   "description": "Discord Musicbot Add-on to the Multipurpose bot, Alloybot. (Official Package)",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "setup": "node setup.js"
   },
