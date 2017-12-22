@@ -42,7 +42,7 @@ DiscordBot.on('message', function(Message) {
 
   function DJ() {
     // || process.env.CREATOR_ID
-    if (CurrentDJs[Message.guild.id] === Message.author.id || process.env.CREATOR_ID) { return true }
+    if (CurrentDJs[Message.guild.id] == Message.author.id || process.env.CREATOR_ID) { return true }
     else { return false };
   }
 
