@@ -32,8 +32,8 @@ function main(Message) {
 
   let Content = Message.content.split(' ');
   Content.shift();
-  Content = Content.join(' ')
-  if (Content) { Message.channel.send(`To add songs to the playlist, do >add ${Content}.`) }
+  Content = Content.join(' ');
+  if (Content) { Message.channel.send(`To add songs to the playlist, do \`>add ${Content}.\``) }
 
   if (Core.Globals[Message.guild.id].VoiceConnection) { VoiceConnection = Core.Globals[Message.guild.id].VoiceConnection }
   else { Message.channel.send(`I need to be connected to a channel first.`) }
@@ -50,19 +50,7 @@ function main(Message) {
     Embed.fields = [{name: 'Song', value: CurrentSong.title}];
     Message.channel.send(`**Now Playing.**`, Embed);
     if (Playlists[Message.guild.id].pos > 0) PastPlaylists[Message.guild.id].add(Playlists[Message.guild.id][Playlists[Message.guild.id].pos - 1].streamURL, [Core.YTService]);
-    Dispatcher.on('end', function(reason) {
-      if (Playlists[Message.guild.id].hasNext() && reason !== 'Skipped') { advance() }
-      else { VoiceConnection.disconnect(); Message.channel.send(`**No more songs in the playlist.**`) };
-    });
     Core.DB.put('Playlists', Playlists);
     Core.DB.put('PastPlaylists', PastPlaylists);
-  }
-
-  function advance() {
-    Playlists[Message.guild.id].next().then(function(bool) {
-      if (bool) play();
-    }).catch(function(error) {
-      console.error(error);
-    })
   }
 }

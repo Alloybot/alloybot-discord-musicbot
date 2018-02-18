@@ -8,7 +8,7 @@ module.exports = function(Modules) {
     name: `setdj`,
     desc: `If there is no DJ, it sets the author of this message to the DJ. If the DJ sends the message, it sets whoever is mentioned as the DJ.`,
     _TYPE: `General`,
-    _DISABLED: false,
+    _DISABLED: true,
     _REASON: undefined
   }
   Modules.Commands['setdj'] = main;

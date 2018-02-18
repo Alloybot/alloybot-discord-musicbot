@@ -29,13 +29,13 @@ function main(Message) {
   else { Message.channel.send(`There is no music playing.`) };
 
   if (Playlists[Message.guild.id].hasNext() && VoiceConnection) { skip() }
+  else { Message.channel.send(`There is no song to skip to.`) };
 
   function skip() {
     Playlists[Message.guild.id].next().then(function(bool) {
       if (bool) {
-        Dispatcher.end('Skipped');
-        require('../Voice/join.js')(Message);
-        require('../Music/play.js')(Message);
+        Dispatcher.end();
+        Core.Modules.Commands.play(Message);
       }
     }).catch(function(error) {
       console.error(error);

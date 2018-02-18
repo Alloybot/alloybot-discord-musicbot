@@ -8,7 +8,7 @@ module.exports = function(Modules) {
     name: `getdj`,
     desc: `Gets the current DJ that is in control of the bot, aside from the owner.`,
     _TYPE: `General`,
-    _DISABLED: false,
+    _DISABLED: true,
     _REASON: undefined
   }
   Modules.Commands['getdj'] = main;
