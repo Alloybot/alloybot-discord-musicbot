@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/AlloybotDevTeam/alloybot-discord-musicbot/issues"
   },
-  "homepage": "https://github.com/AlloybotDevTeam/alloybot-discord-musicbot#readme"
+  "homepage": "https://github.com/AlloybotDevTeam/alloybot-discord-musicbot#readme",
+  "dependencies": {
+    "sec-to-min": "^1.0.1"
+  }
 }
