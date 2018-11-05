@@ -1,0 +1,32 @@
+{
+  "name": "alloybot-discord-musicbot",
+  "version": "0.0.0",
+  "description": "Discord Musicbot module for Alloybot. (Official Module)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlloybotDevTeam/alloybot-discord-musicbot.git"
+  },
+  "keywords": [
+    "discord",
+    "musicbot",
+    "bot",
+    "module",
+    "plugin",
+    "addon",
+    "music",
+    "youtube"
+  ],
+  "author": "Taylor Stapleton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlloybotDevTeam/alloybot-discord-musicbot/issues"
+  },
+  "homepage": "https://github.com/AlloybotDevTeam/alloybot-discord-musicbot#readme"
+}
