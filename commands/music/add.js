@@ -2,24 +2,24 @@
  * DJ Stapleton *
  * add.js   *
  ****************/
-const lang = _langfiles.get('musicbot');
 const _url = require('url');
 const secToMin = require('sec-to-min');
+const commander = alloybot.get('modules').get('commander');
 
 module.exports = function() {
   let metadata = {
     name: 'add',
-    desc: lang.description.add,
+    desc:
+      'Finds the first video returned from using the search words or link and adds it to the end of the queue.',
     usage: 'add <search words|youtube link>'.prefixed().inlineCode(),
     example: 'add khalid better'.prefixed().inlineCode(),
-    type: lang.type[0],
+    type: 'Music',
     disabled: false,
     reason: null
   };
 
-  _bot.commands.set(metadata.name, main);
-  _bot.metadata.set(metadata.name, metadata);
-  _bot.groups[metadata.type].push(metadata.name);
+  commander.commands.set(metadata.name, main);
+  commander.metadata.set(metadata.name, metadata);
 };
 
 class Video {
@@ -39,7 +39,7 @@ class Video {
 }
 
 function main(message) {
-  const database = _connections.get('database').db;
+  /*const database = _connections.get('database').db;
   let collection = database.collection(`guild_${message}`);
 
   for (i in _bot.split) {
@@ -48,5 +48,5 @@ function main(message) {
       if (YouTube.validateURL(item)) {
       }
     } catch (error) {}
-  }
+  }*/
 }

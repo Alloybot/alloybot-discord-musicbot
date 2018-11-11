@@ -2,22 +2,21 @@
  * DJ Stapleton *
  * playlist.js  *
  ****************/
-const lang = _langfiles.get('musicbot');
+const commander = alloybot.get('modules').get('commander');
 
 module.exports = function() {
   let metadata = {
     name: 'queue',
-    desc: lang.description.queue,
+    desc: 'Lists everything in the queue for the server.',
     usage: 'queue'.prefixed().inlineCode(),
     example: 'queue'.prefixed().inlineCode(),
-    type: lang.type[0],
+    type: 'Music',
     disabled: false,
     reason: null
   };
 
-  _bot.commands.set(metadata.name, main);
-  _bot.metadata.set(metadata.name, metadata);
-  _bot.groups[metadata.type].push(metadata.name);
+  commander.commands.set(metadata.name, main);
+  commander.metadata.set(metadata.name, metadata);
 };
 
 function main(message) {}

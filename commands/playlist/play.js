@@ -2,22 +2,22 @@
  * DJ Stapleton *
  * play.js   *
  ****************/
-const lang = _langfiles.get('musicbot');
+const commander = alloybot.get('modules').get('commander');
 
 module.exports = function() {
   let metadata = {
     name: 'play',
-    desc: lang.description.play,
+    desc:
+      'Starts playing the first song in the queue. If there is a youtube link or search words after the command, it will add what it finds to the queue.',
     usage: 'play <search words|youtube link>'.prefixed().inlineCode(),
     example: 'play sick boy the chainsmokers'.prefixed().inlineCode(),
-    type: lang.type[1],
+    type: 'Playlist',
     disabled: false,
     reason: null
   };
 
-  _bot.commands.set(metadata.name, main);
-  _bot.metadata.set(metadata.name, metadata);
-  _bot.groups[metadata.type].push(metadata.name);
+  commander.commands.set(metadata.name, main);
+  commander.metadata.set(metadata.name, metadata);
 };
 
 function main(message) {}
