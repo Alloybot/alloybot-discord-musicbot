@@ -1,5 +1,5 @@
 {
-  "name": "discord-musicbot",
+  "name": "abm-discord-musicbot",
   "version": "0.0.0",
   "description": "Discord Musicbot module for Alloybot",
   "main": "musicbot.js",
