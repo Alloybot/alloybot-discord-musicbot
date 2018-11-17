@@ -2,10 +2,7 @@
   "name": "abm-discord-musicbot",
   "version": "0.0.0",
   "description": "Discord Musicbot module for Alloybot",
-  "main": "musicbot.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "main": "Discord_Musicbot.ts",
   "dependencies": {
     "sec-to-min": "^1.0.1"
   },
