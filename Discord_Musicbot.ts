@@ -1,13 +1,14 @@
-import { IModule, Alloybot } from '../../../Alloybot';
+import { IPlugin, Alloybot, DependantList } from '../../../Alloybot';
 import { EventEmitter } from 'events';
 
-export class Discord_Musicbot extends EventEmitter implements IModule {
-  public readonly name: String = 'Discord-Musicbot';
-  public readonly dependencies: String[] = ['Commander', 'Discord', 'MongoDB'];
+export class Discord_Musicbot extends EventEmitter implements IPlugin {
+  public readonly name: string = 'Discord-Musicbot';
+  public readonly dependencies: string[] = ['Commander', 'Discord', 'MongoDB'];
+  public readonly dependants: DependantList = Alloybot.getDependants(this.name);
 
   constructor() {
     super();
   }
 }
 
-Alloybot.registerModule(new Discord_Musicbot());
+Alloybot.registerPlugin(new Discord_Musicbot());
