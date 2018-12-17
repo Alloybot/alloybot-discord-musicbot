@@ -1,5 +1,5 @@
 {
-  "name": "abm-discord-musicbot",
+  "name": "@alloybot/discord-musicbot",
   "version": "0.0.0",
   "description": "Discord Musicbot module for Alloybot",
   "main": "Discord_Musicbot.ts",
@@ -8,7 +8,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "tsc -b --clean --watch tsconfig.json",
+    "build": "tsc -b --verbose tsconfig.json",
+    "clean": "tsc -b --clean tsconfig.json"
   },
   "repository": {
     "type": "git",
