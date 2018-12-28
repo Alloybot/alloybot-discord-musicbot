@@ -1,18 +1,18 @@
-import { default as Alloybot, Type, Util, ConfigBuilder } from '../../Alloybot';
-import { EventEmitter } from 'events';
+import { default as Alloybot, IFace, Util, ConfigBuilder } from '../../Alloybot';
 
-export default class Discord_Musicbot extends EventEmitter implements Type.IPlugin {
-  public readonly name: string = 'Discord-Musicbot';
-  public readonly dependencies: string[] = ['Commander', 'Discord', 'MongoDB'];
-  public readonly dependants: Type.IPlugin[] = Alloybot.getDependants(this.name);
-  public config;
+export default class Discord_Musicbot extends IFace.IPlugin {
+  protected Name: string = 'Discord-Musicbot';
+  protected Dependencies: string[] = ['Commander', 'Discord', 'MongoDB'];
+  protected Dependants: IFace.IPlugin[] = Alloybot.getDependants(this.Name);
+  protected Logger: Util.Logger = new Util.Logger(this.Name);
+  protected Config;
 
   constructor() {
     super();
-    let Config: ConfigBuilder = new ConfigBuilder('Discord-Musicbot', require('./package.json').version);
-    Config.addOption('Name', ['string'], 'Name of the Musicbot');
-    Config.close();
-    this.config = Config.getConfig();
+    let _config: ConfigBuilder = new ConfigBuilder('Discord-Musicbot', require('./package.json').version);
+    _config.addOption('Name', ['string'], 'Name of the Musicbot');
+    _config.close();
+    this.Config = _config.getConfig();
   }
 }
 
